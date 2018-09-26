@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Search button animation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'api_twitter/css/style.css' %}" >
+</head>
+
+<body>
+
+        <nav class="navbar navbar-default navbar-static-top">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>                        
+                    </button>
+                    <a class="navbar-brand" href="#">Twitter Search</a>
+                  </div>
+                  <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                      <li class="active"><a href="#">Home</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+            
+              <div class="container text-center">
+                <div class="col-md-2"></div>
+                    <form method="POST" action=".">
+                        {% csrf_token %}    
+                        <div class="col-lg-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="search" placeholder="Search tweets,users...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">Go!</button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </div><!-- /.col-lg-6 -->
+                    </form>
+                </div>
+
+                <div class="container">
+                <div class="row search-result">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-10">
+
+                            <div class="block social-block social-twitter">
+                                {% load twitter_tags %}
+                                {% if tweets|length  > 0 %}
+                                    <p>Top {{ tweets|length }} results found</p>
+                                {% endif %}
+                                <ul class="list-group">
+                                    {% for tweet in tweets %}
+                                    <li class="result_li list-group-item">
+                                        <div class="tweet-meta">
+                                            <h4><b>Tweet: </b>{{ tweet.text }}</h4>
+                                            <h4><b>Hashtag: </b>{{ tweet.hashtag }}</h4>
+                                            <a href="https://www.twitter.com/{{ tweet.user.screen_name }}/status/{{ tweet.id }}" target="_blank">
+                                                <img src="{{ tweet.user.profile_image_url }}" width="32" height="32" />
+                                                <h5>{{ tweet.user.name }}<br /><span>@{{ tweet.user.screen_name }} &middot; {{ tweet.created_at|twitter_date }}</span></h5>
+                                            </a>
+                                        </div>                                
+                                    </li>
+                                    {% endfor %}
+                            
+                                </ul>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+            </div>
+</body>
+
+</html>
