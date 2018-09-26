@@ -25,7 +25,7 @@ Add these keys in [settings file](https://github.com/sarvan-nov14/twitter-search
 ```console
   $ virtualenv -p python3 <envname>
 ```
-* Go to created <envname> activate the virtualenv by entering following command
+* Go to created envname activate the virtualenv by entering following command
 ```console
   $ source bin/activate
 ```
