@@ -7,6 +7,11 @@ Simple twitter serach engine. Search top popular tweets.
 2. [Django 2.1](https://www.djangoproject.com/)
 3. [Python-twitter](https://github.com/bear/python-twitter)
 
+#### Create twitter app
+[Twitter app](https://apps.twitter.com/)
+Get the access token and consumer key.
+Add these keys in 
+
 ##### Setps to install
 * Install pip
 ```console
