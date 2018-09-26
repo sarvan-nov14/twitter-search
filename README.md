@@ -10,7 +10,7 @@ Simple twitter serach engine. Search top popular tweets.
 #### Create twitter app
 [Twitter app](https://apps.twitter.com/)
 Get the access token and consumer key.
-Add these keys in 
+Add these keys in [settings file](https://github.com/sarvan-nov14/twitter-search/blob/master/twitter_search/settings.py#L124)
 
 ##### Setps to install
 * Install pip
