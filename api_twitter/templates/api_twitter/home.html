@@ -50,6 +50,13 @@
                         <div class="col-md-10">
 
                             <div class="block social-block social-twitter">
+                                
+                                <ul class="list-group hashtags">
+                                    <p>Top HashTags</p><hr>
+                                    {% for tag in top_hashtags %}
+                                    <li class="list-group-item"><b>{{ tag.hashtag }}</b> - <i>{{ tag.no_of_times_viewed }}</i> Viewed</li>
+                                    {% endfor %}
+                                </ul>
                                 {% load twitter_tags %}
                                 {% if tweets|length  > 0 %}
                                     <p>Top {{ tweets|length }} results found</p>
@@ -59,7 +66,12 @@
                                     <li class="result_li list-group-item">
                                         <div class="tweet-meta">
                                             <h4><b>Tweet: </b>{{ tweet.text }}</h4>
-                                            <h4><b>Hashtag: </b>{{ tweet.hashtag }}</h4>
+                                            <h4><b>Hashtag: </b>{% if tweet.hashtags %}
+                                            {% for hashtag in tweet.hashtags %}
+                                                #{{ hashtag.text }},
+                                            {% endfor %}
+                                            {% endif %}
+                                            </h4>
                                             <a href="https://www.twitter.com/{{ tweet.user.screen_name }}/status/{{ tweet.id }}" target="_blank">
                                                 <img src="{{ tweet.user.profile_image_url }}" width="32" height="32" />
                                                 <h5>{{ tweet.user.name }}<br /><span>@{{ tweet.user.screen_name }} &middot; {{ tweet.created_at|twitter_date }}</span></h5>
