@@ -33,8 +33,14 @@ Add these keys in [settings file](https://github.com/sarvan-nov14/twitter-search
 ```console
   $ pip install -r /path/to/requirements.txt
 ```
-* Move to project root dir, run the server
+* Move to project root dir, run the following commands
+
+```console
+  $ python manage.py migrate
+```
+
 ```console
   $ python manage.py runserver
 ```
+Go to http://127.0.0.1:8000/search/
  
