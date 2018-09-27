@@ -14,7 +14,7 @@ def search(request):
     retrun_data = {}
     tweet_list = []
     hashtags = []
-
+    top_hashtags = []
     if request.method == 'POST':
 
         search_term = request.POST.get('search')

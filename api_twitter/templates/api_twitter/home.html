@@ -51,12 +51,14 @@
 
                             <div class="block social-block social-twitter">
                                 
+                                {% if top_hashtags %}
                                 <ul class="list-group hashtags">
                                     <p>Top HashTags</p><hr>
                                     {% for tag in top_hashtags %}
                                     <li class="list-group-item"><b>{{ tag.hashtag }}</b> - <i>{{ tag.no_of_times_viewed }}</i> Viewed</li>
                                     {% endfor %}
                                 </ul>
+                                {% endif %}
                                 {% load twitter_tags %}
                                 {% if tweets|length  > 0 %}
                                     <p>Top {{ tweets|length }} results found</p>
